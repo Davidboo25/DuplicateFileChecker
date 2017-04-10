@@ -59,11 +59,14 @@ def findDupes(inputDict):
 
 def printDupes(inputList):
     outputText = "\n"
-    for listItem in inputList:
-        outputText += ("These files are exactly the same: ")
-        for item in listItem:
-            outputText += (item + " , " )
-        outputText += ("\n")
+    if (not inputList):
+        print("There are no duplicates in this folder and it's subfolders.")
+    else:
+        for listItem in inputList:
+            outputText += ("These files are exactly the same: ")
+            for item in listItem:
+                outputText += (item + " , " )
+            outputText += ("\n")
     return outputText
 
 # Local host
@@ -74,9 +77,9 @@ BUFFER_SIZE = 1024
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((TCP_IP, TCP_PORT))
 s.listen(1)
-conn, addr = s.accept()
 
 while True:
+    conn, addr = s.accept()
     outputText = ""
     data = conn.recv(BUFFER_SIZE)
     # Decode the data to receive the string.
@@ -90,4 +93,5 @@ while True:
         outputText = mainRunner(data)
 
     conn.send(outputText.encode())
+s.close()
 conn.close()
