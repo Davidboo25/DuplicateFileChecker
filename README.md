@@ -1,5 +1,6 @@
 # DuplicateFileChecker
 Includes two versions of duplicate file checkers when given an input folder.
+Created using Python3.
 
 ## Version 1
 Version 1 is a basic duplicate file checker. 
