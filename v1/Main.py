@@ -50,6 +50,8 @@ def findDupes(inputDict):
     return dupeList
 
 def printDupes(inputList):
+    if(not inputList):
+        print("There are no duplicates in this folder and it's subfolders.")
     for listItem in inputList:
         print("These files are exactly the same: ", end="")
         for item in listItem:
